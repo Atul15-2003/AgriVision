@@ -1,0 +1,1367 @@
+:root {
+  /* Leafdrop Dark Theme (Active) */
+  --forest-green: #2B3E34;
+  --olive-drab: #546A50;
+  --moss-green: #7E8A6D;
+  --cypress: #3F4E40;
+  --lichen: #B5B89B;
+
+  /* Mappings */
+  /* Mappings */
+  --bg-color: var(--lichen);
+  /* Changed to Lightest Green */
+  --text-color: var(--forest-green);
+  /* Dark text for contrast */
+  --accent-color: var(--forest-green);
+  /* Dark Accent */
+  --secondary-color: var(--forest-green);
+  /* Dark for headings */
+  --light-accent: #3F4E40;
+  /* Darker accent background */
+
+  --glass-bg: rgba(43, 62, 52, 0.7);
+  --glass-border: rgba(181, 184, 155, 0.2);
+
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Playfair Display', serif;
+
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  /* ... existing styles ... */
+  --text-color: #2B3E34;
+  /* Update default text var just in case */
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Typography Overrides */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  color: var(--secondary-color);
+  margin-top: 0;
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.container {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Specific Organic Components */
+
+/* Navigation */
+nav {
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-links a {
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+}
+
+/* Underline hover effect */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--accent-color);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Button */
+.btn-primary {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background-color: var(--secondary-color);
+  color: #fff;
+  border-radius: 50px;
+  /* Pill shape */
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(13, 43, 26, 0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(107, 191, 72, 0.3);
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 0.9rem 2.4rem;
+  border: 2px solid var(--secondary-color);
+  color: var(--secondary-color);
+  background: transparent;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background-color: var(--secondary-color);
+  color: #fff;
+}
+
+/* Decorative Elements */
+.leaf-accent {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* Section Spacing */
+section {
+  padding: 6rem 0;
+  position: relative;
+}
+
+/* Utility */
+.text-accent {
+  color: var(--accent-color);
+}
+
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+/* Card Styles */
+.organic-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s ease;
+}
+
+/* ... existing utility styles ... */
+
+/* --- Leafdrop Dark Theme (Exact Match) --- */
+:root {
+  /* User Provided Palette */
+  --forest-green: #2B3E34;
+  --olive-drab: #546A50;
+  --moss-green: #7E8A6D;
+  --cypress: #3F4E40;
+  --lichen: #B5B89B;
+
+  /* Mappings */
+  --bg-dark-forest: var(--forest-green);
+  --leaf-highlight: var(--lichen);
+  --text-light: #e0e0e0;
+  --drop-color: #a4d4e6;
+}
+
+body.leafdrop-theme {
+  background: var(--lichen);
+  /* Lightest Green Background */
+  color: var(--forest-green);
+  /* Dark Text */
+  font-family: var(--font-main);
+  height: auto;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+}
+
+
+
+/* Hanging Leaves (Top) */
+.leaves-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50vh;
+  background: url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000&auto=format&fit=crop') no-repeat top center;
+  background-size: cover;
+  z-index: 1;
+  mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Water Surface (Bottom) */
+.water-surface {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 25vh;
+  background: linear-gradient(to top, rgba(164, 212, 230, 0.05) 0%, transparent 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Water Droplet */
+.water-drop {
+  position: absolute;
+  top: 40vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 10px;
+  background: radial-gradient(circle at 30% 30%, #fff, var(--drop-color));
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  z-index: 2;
+  opacity: 0;
+  animation: dropCycle 5s infinite ease-in;
+}
+
+@keyframes dropCycle {
+  0% {
+    top: 40vh;
+    opacity: 0;
+    transform: translateX(-50%) scale(0.5);
+  }
+
+  5% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+
+  85% {
+    top: 85vh;
+    opacity: 1;
+    transform: translateX(-50%) scale(0.9) scaleY(1.2);
+  }
+
+  /* Just before hit */
+  90% {
+    top: 88vh;
+    opacity: 0;
+    transform: translateX(-50%) scale(2, 0.1);
+  }
+
+  /* Splash */
+  100% {
+    top: 88vh;
+    opacity: 0;
+  }
+}
+
+/* Ripples */
+.ripple-container {
+  position: absolute;
+  bottom: 12vh;
+  /* Slightly above absolute bottom to look like surface */
+  left: 50%;
+  transform: translateX(-50%) rotateX(70deg);
+  /* Flattened perspective */
+  width: 600px;
+  height: 300px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(164, 212, 230, 0.3);
+  border-radius: 50%;
+  opacity: 0;
+  animation: rippleSpread 5s infinite linear;
+  animation-delay: 4.25s;
+  /* Sync with drop splash (85% of 5s) */
+}
+
+.ripple:nth-child(2) {
+  animation-delay: 4.5s;
+}
+
+.ripple:nth-child(3) {
+  animation-delay: 4.75s;
+}
+
+@keyframes rippleSpread {
+  0% {
+    width: 10px;
+    height: 10px;
+    opacity: 0.6;
+    border-color: rgba(164, 212, 230, 0.5);
+  }
+
+  100% {
+    width: 400px;
+    height: 400px;
+    opacity: 0;
+    border-color: transparent;
+  }
+}
+
+/* Typography Exact Match */
+.brand-serif-italic {
+  font-family: 'Playfair Display', serif;
+  font-size: 6rem;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 2px;
+  color: var(--forest-green);
+  /* Dark Text */
+  margin: 0;
+  line-height: 1;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  /* Lighter shadow */
+}
+
+/* --- Redesigned Navigation --- */
+.glass-pill-nav {
+  position: fixed;
+  top: 3rem;
+  /* Moved down slightly */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  /* Gap handled by padding/separators */
+  background: rgba(30, 40, 35, 0.6);
+  /* Darker semi-transparent green/black */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  z-index: 1000;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.glass-pill-nav.nav-hidden {
+  opacity: 0;
+  transform: translate(-50%, -20px);
+  pointer-events: none;
+}
+
+.glass-pill-nav a {
+  color: #e0e0e0;
+  /* Light text */
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+  padding: 0 1.5rem;
+  /* Space around text */
+  text-decoration: none;
+}
+
+/* Separators */
+.glass-pill-nav a:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 12px;
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Underline Hover Effect */
+.glass-pill-nav a::before {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  /* Moved down below text */
+  /* Just below text */
+  left: 1.5rem;
+  /* Match padding-left */
+  width: 0;
+  height: 2px;
+  background-color: #fff;
+  transition: width 0.3s ease;
+}
+
+.stair {
+  width: 20.1%;
+  /* Increased from 20% to fix sub-pixel gaps */
+  height: 100%;
+  background-color: var(--forest-green);
+  /* Fallback */
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
+}
+
+
+.glass-pill-nav a:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.glass-pill-nav a:hover {
+  opacity: 1;
+  color: #fff;
+}
+
+/* --- Redesigned Hero Section --- */
+/* --- Redesigned Hero Section --- */
+.leaves-bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000&auto=format&fit=crop') no-repeat top center;
+  background-size: cover;
+  /* Foggy Gradient Overlay */
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 80%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 80%);
+  z-index: 0;
+  opacity: 1;
+  /* More visible leaves */
+}
+
+/* Add a global gradient to the hero container to blend smoothly */
+.hero-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #7E8A6D 0%, #B5B89B 100%);
+  /* Starting with moss green blending to lichen */
+  z-index: -1;
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 10;
+  padding: 0 1rem;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-brand-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  /* Reduced space */
+  margin-bottom: 2rem;
+}
+
+.hero-logo-icon {
+  width: 80px;
+  height: auto;
+  /* Glow effect matching the light green */
+  filter: drop-shadow(0 0 10px rgba(204, 255, 204, 0.6));
+  display: block;
+}
+
+.hero-brand-text {
+  font-family: 'Outfit', sans-serif;
+  /* Changed to sans-serif as requested */
+  font-style: normal;
+  /* Removed italic */
+  font-weight: 700;
+  font-size: 5rem;
+  margin: 0;
+  line-height: 1;
+  color: #ccffcc;
+  /* Lightest green */
+  /* Text Glow */
+  text-shadow: 0 0 15px rgba(204, 255, 204, 0.5);
+}
+
+
+/* --- About Page Redesign (Figma Style) --- */
+
+/* 1. Hero Banner */
+.about-banner {
+  position: relative;
+  height: 50vh;
+  min-height: 400px;
+  background: url('/Pictures/muneeb-s-x9NfeD3FpsE-unsplash.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+.about-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(13, 22, 20, 0.6);
+  /* Dark overlay for text readability */
+}
+
+.banner-content {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.1);
+  /* Transparent white */
+  backdrop-filter: blur(5px);
+  /* Glass effect */
+  padding: 2rem 4rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: inline-block;
+  /* window sizing */
+}
+
+.banner-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  /* Bolder */
+  margin-bottom: 0.5rem;
+  color: #b5b89b;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  /* Wide spacing for premium look */
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+  /* Hard shadow for depth */
+}
+
+.breadcrumb {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  opacity: 1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #b5b89b;
+}
+
+.breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.breadcrumb a:hover {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+  /* Subtle lift */
+}
+
+.breadcrumb span {
+  margin: 0 0.5rem;
+  color: var(--moss-green);
+}
+
+/* 2. Top Section - "Best Agriculture Market" */
+.about-split-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 6rem 0;
+}
+
+.about-image-collage {
+  position: relative;
+  height: 500px;
+}
+
+.collage-main {
+  width: 80%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.collage-small {
+  position: absolute;
+  bottom: -40px;
+  right: 0;
+  width: 50%;
+  height: 60%;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 8px solid #fff;
+  /* White border effect */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.gold-subheading {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #D4A017;
+  /* Gold/Yellow */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.section-heading-dark {
+  font-family: 'Outfit', sans-serif;
+  font-size: 3rem;
+  color: var(--forest-green);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.about-checklist li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.8rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--forest-green);
+  font-weight: 500;
+}
+
+.about-checklist li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  color: #D4A017;
+  /* Gold Checkmark */
+}
+
+/* 3. Video/Stats Section (Dark) */
+.video-stats-section {
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2000&auto=format&fit=crop') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  /* Parallax effect */
+  padding: 8rem 0;
+  text-align: center;
+  color: #fff;
+}
+
+.video-stats-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(13, 22, 20, 0.85);
+  /* Very dark overlay */
+}
+
+.video-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.play-btn {
+  width: 80px;
+  height: 80px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  color: var(--forest-green);
+}
+
+.play-btn:hover {
+  transform: scale(1.1);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+  padding-top: 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-item h3 {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.stat-item p {
+  color: var(--lichen);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* 4. Testimonials (Cards) */
+.testimonials-section {
+  padding: 6rem 0;
+  background: #F9F9F9;
+  /* Very light subtle background */
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.testimonial-card {
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.testimonial-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial-quote {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* 5. Team Section */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.team-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  height: 400px;
+}
+
+.team-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.team-card:hover .team-img {
+  transform: scale(1.05);
+}
+
+.team-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  color: #fff;
+}
+
+.team-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.team-role {
+  color: var(--lichen);
+  font-size: 0.9rem;
+}
+
+/* Footer (Base Style) */
+.site-footer {
+  background: #1a2624;
+  color: #fff;
+  padding: 5rem 0 2rem 0;
+  font-size: 0.9rem;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.footer-col h4 {
+  color: #fff;
+  margin-bottom: 1.5rem;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 1px;
+}
+
+.footer-links li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-links a:hover {
+  color: var(--lichen);
+}
+
+.newsletter-input {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+
+  .about-split-section,
+  .testimonial-grid,
+  .team-grid,
+  .stats-grid,
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .collage-small {
+    width: 60%;
+    right: -10px;
+  }
+}
+
+
+.hero-logo-icon {
+  width: 60px;
+}
+
+.hero-brand-text {
+  font-size: 3.5rem;
+}
+
+/* 
+.hero-title {
+...
+} 
+*/
+
+.hero-title {
+  font-size: 8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #0d1614;
+  /* Dark Green */
+  line-height: 1;
+  opacity: 1;
+  text-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+  /* Light shadow for contrast on dark? Or dark on light? */
+  /* If bg is light green/leaves, dark text works. If bg is dark, it fails. User asked for this. */
+}
+
+.hero-sub-spaced {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: #bdcda5;
+  /* New requested light olive green */
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  opacity: 1;
+  text-shadow: 0 0 10px rgba(189, 205, 165, 0.4);
+  /* Matching glow */
+}
+
+.hero-text-block {
+  max-width: 550px;
+  margin: 0 auto 3.5rem auto;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 1;
+  color: #bdcda5;
+  /* New requested light olive green */
+  font-weight: 500;
+  text-shadow: 0 0 8px rgba(189, 205, 165, 0.3);
+  /* Subtle glow */
+}
+
+
+/* CTA Pill Button */
+.cta-pill {
+  display: inline-block;
+  padding: 1rem 3rem;
+  border: 1px solid var(--forest-green);
+  border-radius: 50px;
+  color: var(--forest-green);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.cta-pill:hover {
+  background: var(--forest-green);
+  color: var(--lichen);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(43, 62, 52, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .glass-pill-nav {
+    padding: 0.8rem 1.5rem;
+    gap: 1rem;
+    width: 90%;
+    top: 1rem;
+  }
+
+  .hero-title {
+    font-size: 4rem;
+  }
+
+  .hero-sub-spaced {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+  }
+}
+
+/* ... existing utility styles ... */
+
+/* --- How It Works Section (Process Animation) --- */
+.how-it-works-section {
+  padding: 6rem 2rem;
+  background-color: #0d1614;
+  /* Slightly lighter than #0B1211 for contrast */
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.step-card {
+  position: relative;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: transform 0.3s ease;
+}
+
+/* Step 1: Data Input - Floating Icons */
+.floating-icon-container {
+  height: 80px;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.float-icon {
+  font-size: 2rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  /* Default invisible, animated by GSAP */
+}
+
+/* Step 2: Analysis - Pulse */
+.brain-pulse {
+  font-size: 3rem;
+  color: var(--leaf-highlight);
+  margin-bottom: 1rem;
+  display: inline-block;
+  /* GSAP will animate scale */
+}
+
+/* Step 3: Result - Dashboard Mockup */
+.result-mockup {
+  background: #1a2624;
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: 'Inter', sans-serif;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  /* GSAP will animate opacity */
+  transform: translateX(20px);
+}
+
+.mockup-stat {
+  font-size: 1.5rem;
+  color: var(--leaf-highlight);
+  font-weight: 700;
+}
+
+.mockup-label {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+/* --- Sticky Nav Transition --- */
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d1614;
+  /* Dark Green */
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  transform: translateY(-100%);
+  transition: transform 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.sticky-nav.visible {
+  transform: translateY(0);
+}
+
+/* --- Static Page Nav Modifier (For inner pages like About) --- */
+.sticky-nav.static-page-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transform: none !important;
+  background: #0d1614 !important;
+  /* Dark Green Background */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  padding: 1rem 4rem !important;
+  /* Restore standard padding */
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.sticky-nav.static-page-nav .sticky-logo {
+  color: #fff;
+  /* White text for contrast */
+}
+
+.sticky-nav.static-page-nav .sticky-links a {
+  color: rgba(255, 255, 255, 0.9);
+  /* Light text */
+}
+
+.sticky-nav.static-page-nav .nav-btn-login {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.sticky-nav.static-page-nav .nav-btn-signup {
+  background: var(--lichen);
+  color: var(--forest-green) !important;
+}
+
+/* --- Transforming Agriculture (3D Scroll Section) --- */
+.agri-stage-wrapper {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Center Vertically */
+  align-items: center;
+  /* Center Horizontally */
+  perspective: 1200px;
+  /* CRITICAL: Enables 3D Space */
+  overflow: hidden;
+  background-color: var(--lichen);
+  /* Light Green background */
+}
+
+.agri-section-title {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  /* transform: translateX(-50%); Removed to allow animation to control transform */
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-style: italic;
+  z-index: 20;
+  text-align: center;
+  width: 100%;
+  color: var(--forest-green);
+}
+
+.agri-cards-container {
+  position: relative;
+  width: 80%;
+  max-width: 900px;
+  height: 50vh;
+  transform-style: preserve-3d;
+  /* Children inherit 3D space */
+}
+
+.agri-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.3);
+  /* Light Glass */
+  /* Subtle glass */
+  border: 1px solid var(--forest-green);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+
+  /* Initial State (GSAP will handle movement, but defaults are good) */
+  opacity: 0;
+  visibility: hidden;
+  transform-style: preserve-3d;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+  /* Deep shadow */
+  backface-visibility: hidden;
+}
+
+.card-image-wrapper {
+  flex: 1;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  /* Start Rotated */
+  transform: translateZ(-50px) rotateY(-15deg);
+  transition: transform 0.5s ease;
+}
+
+.card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-text-wrapper {
+  flex: 1;
+  text-align: left;
+  /* Start Tilted */
+  transform: rotateX(10deg);
+  opacity: 0.8;
+}
+
+.card-text-wrapper h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--forest-green);
+  /* Darker Text for contrast */
+  margin-bottom: 1rem;
+}
+
+.card-text-wrapper p {
+  font-family: 'Inter', sans-serif;
+  color: var(--forest-green);
+  line-height: 1.6;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .agri-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .card-image-wrapper {
+    width: 100%;
+    height: 200px;
+  }
+
+  .card-text-wrapper {
+    text-align: center;
+  }
+
+  .agri-section-title {
+    font-size: 2rem;
+    top: 5%;
+  }
+}
+
+/* The elements themselves inside the sticky nav */
+/* Ensuring sticky-nav is correctly styled here */
+/* Ensuring sticky-nav is correctly styled here */
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #0d1614;
+  padding: 0.8rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+
+  /* Hidden State */
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Active State */
+.sticky-nav.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sticky-logo {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: 700;
+  margin-left: 1rem;
+  /* Ensure some space */
+}
+
+.sticky-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  /* Reduced from 2rem to prevent cutoff */
+  padding-right: 5rem;
+  /* Increased to shift buttons left */
+}
+
+.sticky-links a {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  transition: color 0.3s;
+  letter-spacing: 0.5px;
+  position: relative;
+  text-decoration: none;
+}
+
+/* Underline Hover Effect (Excluding Buttons) */
+.sticky-links a:not(.nav-btn-login):not(.nav-btn-signup)::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--lichen);
+  transition: width 0.3s ease;
+}
+
+.sticky-links a:not(.nav-btn-login):not(.nav-btn-signup):hover::after {
+  width: 100%;
+}
+
+.sticky-links a:hover {
+  color: var(--lichen);
+}
+
+.nav-btn-login {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.35rem 0.9rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+}
+
+.nav-btn-signup {
+  background: var(--lichen);
+  color: var(--forest-green) !important;
+  padding: 0.35rem 0.9rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.nav-btn-signup:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+/* --- Stair Transition Styles (Global) --- */
+#stair-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.stair {
+  width: 20.1%;
+  /* 5 bars = 20.1% each to fix gaps */
+  height: 100%;
+  /* Start full height */
+  background-color: #0d1614;
+  /* Dark rich black/green from theme */
+  transform-origin: top;
+}

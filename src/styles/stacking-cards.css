@@ -1,0 +1,211 @@
+/* -------------------------------- 
+
+File#: _1_stacking-cards
+Title: Stacking Cards
+Descr: Cards stack effect on vertical scrolling
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+/* variables */
+:root {
+    /* colors */
+    --sg0-color-primary-hsl: 250, 84%, 54%;
+    --sg0-color-bg-hsl: 0, 0%, 100%;
+    --sg0-color-contrast-high-hsl: 230, 7%, 23%;
+    --sg0-color-contrast-higher-hsl: 230, 13%, 9%;
+    --sg0-color-bg-light-hsl: 0, 0%, 100%;
+
+    /* spacing */
+    --sg0-space-sm: 0.75rem;
+    --sg0-space-md: 1.25rem;
+}
+
+@media(min-width: 64rem) {
+    :root {
+        /* spacing */
+        --sg0-space-sm: 1.125rem;
+        --sg0-space-md: 2rem;
+    }
+}
+
+/* component */
+.stack-cards {
+    --stack-cards-gap: var(--sg0-space-sm);
+    --stack-cards-item-ratio: 2/1;
+    list-style: none;
+    /* Ensure no bullets */
+    padding: 0;
+    margin: 0;
+}
+
+.stack-cards__item {
+    position: relative;
+    position: -webkit-sticky;
+    position: sticky;
+    top: calc(var(--sg0-space-md) + 160px);
+    height: 0;
+    padding-bottom: calc(100%/(var(--stack-cards-item-ratio)));
+    -webkit-transform-origin: center top;
+    transform-origin: center top;
+    margin-bottom: var(--sg0-space-sm);
+    /* Fallback/Extra spacing */
+}
+
+.stack-cards__item>* {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+/* utility classes */
+.sg0-overflow-hidden {
+    overflow: hidden;
+}
+
+.sg0-shadow-md {
+    box-shadow: 0 0.9px 1.5px rgba(0, 0, 0, 0.03), 0 3.1px 5.5px rgba(0, 0, 0, 0.08), 0 14px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Screenshot Match: Neon Green Glow */
+.stack-cards__item {
+    border: 1px solid #0f0;
+    /* Fallback */
+    border: 2px solid rgba(100, 255, 100, 0.8);
+    box-shadow: 0 0 15px rgba(50, 200, 50, 0.4), inset 0 0 20px rgba(50, 200, 50, 0.1);
+}
+
+.sg0-radius-lg {
+    border-radius: 0.5em;
+}
+
+.sg0-bg {
+    --sg0-bg-o: 1;
+    background-color: hsla(var(--sg0-color-bg-hsl), var(--sg0-bg-o, 1));
+}
+
+.sg0-flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.sg0-flex {
+    display: flex;
+}
+
+:where(.sg0-inner-glow) {
+    position: relative;
+}
+
+.sg0-inner-glow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow: inset 0 0 0.5px 1px hsla(0, 0%, 100%, 0.075);
+}
+
+.sg0-bg-light {
+    --sg0-bg-o: 1;
+    background-color: hsla(var(--sg0-color-bg-light-hsl), var(--sg0-bg-o, 1));
+}
+
+/* Custom additions for card content styling within the stack structure */
+.card-content-inner {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+    overflow: hidden;
+    background-color: #0d1614;
+    /* Dark background for contrast with white text */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-image-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.card-image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Hover effect: Subtle zoom on image */
+.stack-cards__item:hover .card-image-section img {
+    transform: scale(1.05);
+}
+
+.card-text-section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 2;
+
+    /* Glassmorphism Effect */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-text-section h3 {
+    margin-bottom: 0.5rem;
+    color: #fff;
+    /* White text for contrast on dark/image backgrounds */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    font-size: 1.5rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.card-text-section p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    font-size: 1rem;
+    max-width: 800px;
+}
+
+@media(max-width: 768px) {
+    .stack-cards {
+        --stack-cards-item-ratio: 0.8;
+        /* Taller cards on mobile */
+    }
+
+    .card-text-section {
+        padding: 1.5rem;
+        background: rgba(0, 0, 0, 0.6);
+        /* Darker background for mobile readability if blur is heavy */
+        backdrop-filter: blur(15px);
+    }
+}
+
+/* Header Animation Class */
+.agri-section-title.fade-out-up {
+    transform: translateY(-200%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.6s ease-out;
+}

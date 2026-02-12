@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgriVision | Home</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/main.css">
+    <link rel="stylesheet" href="/src/styles/animations.css">
+    <link rel="stylesheet" href="/src/styles/transition.css">
+    <link rel="stylesheet" href="/src/styles/stacking-cards.css">
+</head>
+
+<body>
+    <!-- Stair Transition Container -->
+    <div id="stair-container"></div>
+
+    <!-- Centered Glass Pill Navigation -->
+    <nav class="glass-pill-nav">
+        <a href="/index.html">Home</a>
+        <a href="/about.html">About Us</a>
+        <a href="/resources.html">Resources</a>
+        <a href="/contact.html">Contact</a>
+    </nav>
+
+    <!-- Sticky Navbar (Hidden initially, appears on scroll) -->
+    <nav class="sticky-nav">
+        <div class="sticky-logo">AgriVision</div>
+        <div class="sticky-links">
+            <a href="/index.html">Home</a>
+            <a href="/resources.html">Resources</a>
+            <a href="/about.html">About Us</a>
+            <a href="/contact.html">Contact</a>
+            <a href="/login.html" class="nav-btn-login">Login</a>
+            <a href="/signup.html" class="nav-btn-signup">Sign In</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-container"
+        style="height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; z-index: 5;">
+
+        <!-- Background Layer with Foggy Gradient -->
+        <div class="leaves-bg-layer"></div>
+
+        <!-- Hero Content (Centered) -->
+        <div class="hero-content">
+
+            <div class="hero-logo-container">
+                <!-- If there is an actual logo image, it would go here. For now, text as per prompt "logo with text" -->
+                <!-- Or just the text "AgriVision" acting as the logo if no image provided. 
+                      The prompt says "logo with text PRECISION...". I will assume the main title is the logo text. -->
+            </div>
+
+            <!-- Logo + Brand Name Row -->
+            <div class="hero-brand-row">
+                <img src="/logo.svg" alt="AgriVision Logo" class="hero-logo-icon">
+                <h1 class="brand-serif-italic hero-brand-text">AgriVision</h1>
+            </div>
+
+            <div class="hero-sub-spaced">
+                PRECISION &nbsp;.&nbsp; SUSTAINABILITY &nbsp;.&nbsp; INTELLIGENCE
+            </div>
+
+            <p class="hero-text-block">
+                Leveraging machine learning to provide tailored agricultural insights. Optimize your harvest using
+                real-time soil and environmental data analysis.
+            </p>
+
+            <a href="/signup.html" class="cta-pill">
+                Get Started >
+            </a>
+        </div>
+        <div class="water-surface"></div>
+    </section>
+
+    <!-- Transforming Agriculture 3D Section -->
+    <section class="transforming-agriculture-section" id="how-it-works"
+        style="padding: 4rem 1rem; background-color: var(--sg0-color-bg-light-hsl);">
+        <div class="stacking-cards-wrapper"
+            style="max-width: 1000px; margin: 0 auto; overflow: visible; height: auto; padding-bottom: 200px;">
+            <h2 class="brand-serif-italic agri-section-title"
+                style="position: sticky; top: 100px; z-index: 10; width: auto; text-align: center; margin-bottom: 50px; color: var(--secondary-color); transition: top 0.3s;">
+                Transforming Agriculture
+            </h2>
+
+            <ul class="stack-cards js-stack-cards">
+                <!-- Card 1: Soil Analysis (Screenshot Match) -->
+                <li class="stack-cards__item js-stack-cards__item" style="background: rgba(0,0,0,0.8);">
+                    <div class="card-content-inner" style="border: none; background: transparent;">
+                        <!-- Graph overlay mockup -->
+                        <div class="card-image-section">
+                            <!-- Using a placeholder or the soil SVG, but positioning it to allow the text to be seen as in screenshot -->
+                            <img src="/soil-analysis-overlay.svg" alt="Soil Analysis Overlay"
+                                style="opacity: 0.3; object-fit: cover;" />
+
+                            <!-- Mocking the Green Graph Overlay from Screenshot -->
+                            <div
+                                style="position: absolute; top: 10%; right: 10%; width: 300px; border: 2px solid #0f0; border-radius: 10px; padding: 1rem; background: rgba(0,0,0,0.8); color: #fff; font-family: monospace;">
+                                <h4 style="color: #0f0; margin: 0 0 10px 0;">SOIL COMPOSITION</h4>
+                                <div style="display: flex; align-items: center; margin-bottom: 5px;"><span
+                                        style="width: 10px; height: 10px; background: #eab308; display: inline-block; margin-right: 5px;"></span>
+                                    Sand: 40%</div>
+                                <div style="display: flex; align-items: center; margin-bottom: 5px;"><span
+                                        style="width: 10px; height: 10px; background: #a16207; display: inline-block; margin-right: 5px;"></span>
+                                    Silt: 40%</div>
+                                <div style="display: flex; align-items: center;"><span
+                                        style="width: 10px; height: 10px; background: #78716c; display: inline-block; margin-right: 5px;"></span>
+                                    Clay: 20%</div>
+                            </div>
+
+                            <!-- pH Indicator Mockup -->
+                            <div
+                                style="position: absolute; top: 40%; right: 20%; color: #f97316; font-family: monospace;">
+                                pH: 6.5 (OPTIMAL)
+                                <div
+                                    style="width: 20px; height: 20px; border: 2px solid #f97316; border-radius: 50%; display: inline-block; margin-left: 5px;">
+                                </div>
+                            </div>
+
+                            <!-- Nitrogen Mockup -->
+                            <div style="position: absolute; top: 60%; left: 30%; color: #0f0; font-family: monospace;">
+                                N: HIGH
+                                <div
+                                    style="width: 20px; height: 20px; border: 2px solid #0f0; border-radius: 50%; display: inline-block; margin-left: 5px;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-text-section"
+                            style="background: linear-gradient(to top, rgba(50,50,0,0.9), transparent); border: none;">
+                            <h3 style="font-family: 'Playfair Display', serif; color: #fff;">Unlock Your Soil's
+                                Potential</h3>
+                            <p style="color: #ccc;">Advanced sensor integration maps nutrient profiles and pH levels in
+                                real-time, giving you a complete subterranean picture.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Card 2: Weather Prediction -->
+                <li class="stack-cards__item js-stack-cards__item" style="background: rgba(0,0,0,0.8);">
+                    <div class="card-content-inner" style="border: none; background: transparent;">
+                        <div class="card-image-section">
+                            <img src="/weather.jpg" alt="Weather Prediction Visualization" style="opacity: 0.5;" />
+                        </div>
+                        <div class="card-text-section"
+                            style="background: linear-gradient(to top, rgba(0,0,50,0.9), transparent); border: none;">
+                            <h3>Anticipate, Adapt, Thrive</h3>
+                            <p>Our localized climate models predict micro-weather patterns, allowing you to shield your
+                                crops before potential damage occurs.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Card 3: Yield Optimization -->
+                <li class="stack-cards__item js-stack-cards__item" style="background: rgba(0,0,0,0.8);">
+                    <div class="card-content-inner" style="border: none; background: transparent;">
+                        <div class="card-image-section">
+                            <img src="/yield-growth-graph.svg" alt="Yield Growth Graph" style="opacity: 0.5;" />
+                        </div>
+                        <div class="card-text-section"
+                            style="background: linear-gradient(to top, rgba(50,0,0,0.9), transparent); border: none;">
+                            <h3>Maximize Every Harvest</h3>
+                            <p>Machine learning algorithms analyze growth cycles to pinpoint the exact window for
+                                maximum yield quantity and quality.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Card 4 -->
+                <li class="stack-cards__item js-stack-cards__item" style="background: rgba(0,0,0,0.8);">
+                    <div class="card-content-inner" style="border: none; background: transparent;">
+                        <div class="card-image-section">
+                            <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?q=80&w=2072&auto=format&fit=crop"
+                                alt="Drone Smart Farm" style="opacity: 0.5;" />
+                        </div>
+                        <div class="card-text-section"
+                            style="background: linear-gradient(to top, rgba(0,50,0,0.9), transparent); border: none;">
+                            <h3>Grow Smarter, Not Harder</h3>
+                            <p>Optimize resource usage—water, fertilizer, and energy—to reduce costs while regenerating
+                                the land for future generations.</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/scripts/scroll-animations.js"></script>
+    <script type="module" src="/src/scripts/stacking-cards.js"></script>
+    <script type="module" src="/src/scripts/stair-transition.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+/* Stair Transition Styles */
+#stair-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    z-index: 9999;
+    pointer-events: none;
+    /* Allows clicking through after animation if height is 0, but good to have */
+}
+
+.stair {
+    width: 20%;
+    /* 5 bars = 20% each */
+    height: 100%;
+    /* Start full height */
+    background-color: #0d1614;
+    /* Dark rich black/green from theme or just black */
+    transform-origin: top;
+    /* Animate height from top */
+}
