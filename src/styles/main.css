@@ -799,6 +799,411 @@ body.leafdrop-theme {
   transition: transform 0.5s ease;
 }
 
+/* --- Sidebar & 3D Redesign (Image Reference Style) --- */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 225px;
+  height: 100vh;
+  background-color: #0a1410;
+  /* Very deep forest green */
+  color: #fff;
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 0;
+  box-shadow: 15px 0 50px rgba(0, 0, 0, 0.4);
+  border-radius: 0 40px 40px 0;
+  overflow: hidden;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar-header {
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 3rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-brand:hover {
+  transform: translateX(5px);
+}
+
+.sidebar-brand-logo {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  flex-shrink: 0;
+  /* Apply light green tint to match text color #bdf0c4 */
+  filter: brightness(0) saturate(100%) invert(88%) sepia(21%) saturate(543%) hue-rotate(65deg) brightness(101%) contrast(89%);
+}
+
+.sidebar-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #bdf0c4;
+  margin: 0;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  transition: opacity 0.3s ease, visibility 0.3s;
+}
+
+.sidebar.collapsed .sidebar-title {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+.sidebar.collapsed .sidebar-header {
+  padding: 0;
+  justify-content: center;
+}
+
+/* Unified Toggle Button Style (Icon only) */
+.sidebar-toggle-btn {
+  background: transparent;
+  border: none;
+  color: #ff8a00;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  z-index: 1001;
+  padding: 0;
+}
+
+.sidebar-toggle-btn:hover {
+  color: #bdf0c4;
+  transform: scale(1.1);
+}
+
+.sidebar-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+/* Base Desktop State: Smoothly transition button position */
+@media (min-width: 769px) {
+  .sidebar-toggle-btn.outer {
+    display: none !important;
+    /* Never used on desktop */
+  }
+
+  .sidebar.collapsed .sidebar-header {
+    flex-direction: column;
+    padding-top: 2rem;
+    gap: 2rem;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .sidebar.collapsed .sidebar-toggle-btn {
+    display: none;
+  }
+
+  .sidebar.collapsed .sidebar-brand {
+    justify-content: center;
+  }
+}
+
+/* Mobile & Split Screen Logic */
+@media (max-width: 768px) {
+  .sidebar {
+    left: 0;
+    top: 0;
+    height: 100vh;
+    border-radius: 0 40px 40px 0;
+    transform: translateX(-110%);
+    width: 225px !important;
+    /* Force full width on mobile */
+  }
+
+  .sidebar.collapsed {
+    width: 280px !important;
+    /* Ensure width doesn't shrink on mobile even if collapsed class is present */
+  }
+
+  /* Hide the square toggle - using handle instead as requested */
+  .sidebar-toggle-btn.outer {
+    display: none !important;
+  }
+}
+
+/* Handle to open sidebar when collapsed on Desktop */
+.sidebar-handle {
+  position: fixed;
+  top: 3.3rem;
+  /* Matches user request */
+  left: 225px;
+  /* Aligns with expanded sidebar width */
+  width: 25px;
+  height: 40px;
+  background: #ff8a00;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-handle:hover {
+  width: 25px;
+}
+
+@media (min-width: 769px) {
+  .sidebar.collapsed~.sidebar-handle {
+    left: 80px;
+  }
+
+  /* Handle hover refinements */
+  .sidebar-handle:hover {
+    background: #bdf0c4;
+    color: #0a1410;
+    width: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar.active-mobile {
+    transform: translateX(0);
+  }
+
+  /* Show handle when sidebar is tucked away on mobile */
+  .sidebar:not(.active-mobile)~.sidebar-handle {
+    opacity: 1;
+    visibility: visible;
+    top: 2rem;
+    left: 0;
+    width: 15px;
+    height: 60px;
+    border-radius: 0 10px 10px 0;
+    transform: none;
+  }
+
+  .sidebar.active-mobile+.sidebar-toggle-btn.outer {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 0 !important;
+  }
+}
+
+.sidebar-menu {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.menu-group.bottom {
+  margin-top: auto;
+  padding-bottom: 1rem;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.2rem 2.5rem;
+  color: #8a9a94;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar.collapsed .sidebar-link {
+  padding: 1.2rem 0;
+  justify-content: center;
+}
+
+.sidebar-link span {
+  white-space: nowrap;
+  transition: opacity 0.3s ease, visibility 0.3s;
+}
+
+.sidebar.collapsed .sidebar-link span {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+.sidebar-link i {
+  font-size: 1.4rem;
+}
+
+/* Active State - Orange as in image */
+.sidebar-link.active {
+  color: #ff8a00;
+  background: linear-gradient(90deg, rgba(255, 138, 0, 0.1) 0%, transparent 100%);
+}
+
+.sidebar-link.active::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 35px;
+  background: #ff8a00;
+  border-radius: 4px 0 0 4px;
+  box-shadow: -2px 0 10px rgba(255, 138, 0, 0.5);
+}
+
+.sidebar-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-link.logout {
+  color: #ff8a00;
+  /* Orange logout as in image */
+}
+
+/* 3D Button Effect for Links */
+.sidebar-link span,
+.sidebar-link i {
+  transition: transform 0.2s ease;
+}
+
+.sidebar-link:active span,
+.sidebar-link:active i {
+  transform: scale(0.95);
+}
+
+/* Main Content Shift */
+.main-content {
+  margin-left: 225px;
+  transition: margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 100vh;
+  background-color: var(--lichen);
+  padding: 1.5rem 2rem;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.4);
+  padding: 6px 12px;
+  border-radius: 50px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.user-profile:hover {
+  background: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  background-color: #8ECAE6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  color: #2b3e34;
+  font-size: 0.9rem;
+}
+
+.user-profile i {
+  color: #2b3e34;
+  font-size: 1rem;
+}
+
+.sidebar.collapsed~.main-content {
+  margin-left: 80px;
+}
+
+/* Overlay */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(13, 22, 20, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+}
+
+.sidebar.active-mobile~.sidebar-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    left: 0;
+    top: 0;
+    height: 100vh;
+    border-radius: 0 30px 30px 0;
+    transform: translateX(-110%);
+  }
+
+  .sidebar.active-mobile {
+    transform: translateX(0);
+  }
+
+  .sidebar.collapsed {
+    transform: translateX(-110%);
+  }
+}
+
+
+
 .team-card:hover .team-img {
   transform: scale(1.05);
 }

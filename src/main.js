@@ -150,12 +150,68 @@ const initSlideshow = () => {
     }
 };
 
+// --- 5. Sidebar Logic ---
+const initSidebar = () => {
+    const sidebar = document.getElementById('sidebar');
+    const handle = document.getElementById('sidebarHandle');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    if (!sidebar || !handle) return;
+
+    const toggleSidebar = () => {
+        const isMobile = window.innerWidth <= 768;
+        const icon = handle.querySelector('i');
+
+        if (isMobile) {
+            sidebar.classList.toggle('active-mobile');
+        } else {
+            sidebar.classList.toggle('collapsed');
+            // Update icon for desktop toggle
+            if (icon) {
+                if (sidebar.classList.contains('collapsed')) {
+                    icon.className = 'ph ph-caret-right';
+                } else {
+                    icon.className = 'ph ph-caret-left';
+                }
+            }
+        }
+    };
+
+    handle.addEventListener('click', toggleSidebar);
+
+    if (overlay) {
+        overlay.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('active-mobile');
+            } else {
+                sidebar.classList.add('collapsed');
+                // Sync icon if manually controlled by overlay
+                const icon = handle.querySelector('i');
+                if (icon) icon.className = 'ph ph-caret-right';
+            }
+        });
+    }
+
+    // Reset mobile state on resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            sidebar.classList.remove('active-mobile');
+        }
+    });
+
+};
+
+// --- Redesigned Navigation Shift ---
+// If on a page with a sidebar, we don't need the pill nav scroll logic to be as aggressive
+
+
 // --- 4. Initialization ---
 const runAnimations = () => {
     console.log("Initializing AgriVision Core...");
     initStairTransition();
     initNavToggle(); // Re-added the missing scroll logic
     initSlideshow();
+    initSidebar();
 };
 
 if (document.readyState === 'loading') {
